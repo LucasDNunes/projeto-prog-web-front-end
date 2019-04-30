@@ -8,6 +8,7 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./categorias-pesquisa.component.css']
 })
 export class CategoriasPesquisaComponent implements OnInit {
+
   categorias = [];
 
   constructor(
@@ -22,7 +23,7 @@ export class CategoriasPesquisaComponent implements OnInit {
   pesquisar() {
     this.service.pesquisar()
       .then((dados) => {
-        this.categorias = dados;
+        this.categorias = dados['content'];
       });
   }
 
@@ -36,6 +37,10 @@ export class CategoriasPesquisaComponent implements OnInit {
           detail: `Categoria ${categoria.nome} excluída`
         });
       });
+  }
+
+  filtrarCategoria(categoria: string){
+    console.log(categoria);
   }
 
 }

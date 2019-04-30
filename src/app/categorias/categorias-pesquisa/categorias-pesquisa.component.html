@@ -6,7 +6,7 @@
 
     <div class="ui-g-12 ui-fluid">
       <label>Descrição</label>
-      <input pInputText type="text" />
+      <input pInputText type="text" #search (keyup.enter)="filtrarCategoria(search.value)"/>
     </div>
 
     <div class="ui-g-12">
@@ -47,7 +47,7 @@
                 pTooltip="Excluir"
                 tooltipPosition="top"
                 showDelay="1000"
-                (click)="ecluir(cat)"
+                (click)="excluir(categoria)"
               ></button>
             </td>
           </tr>
