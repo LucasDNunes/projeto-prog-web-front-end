@@ -1,3 +1,4 @@
+<p-toast></p-toast>
 <div class="container">
   <div class="ui-g">
     <div class="ui-g-12">
@@ -6,7 +7,13 @@
 
     <div class="ui-g-12 ui-fluid">
       <label>Descrição</label>
-      <input pInputText type="text" #search (keyup.enter)="filtrarCategoria(search.value)"/>
+      <input
+        pInputText
+        type="text"
+        #search
+        (keyup.enter)="filtrarCategoria(search.value)"
+        placeholder="Pesquisar pela categoria; Ex: informatica"
+      />
     </div>
 
     <div class="ui-g-12">
@@ -40,6 +47,7 @@
                 pTooltip="Editar"
                 tooltipPosition="top"
                 showDelay="1000"
+                class="ui-button-info"
               ></button>
               <button
                 pButton
@@ -47,6 +55,7 @@
                 pTooltip="Excluir"
                 tooltipPosition="top"
                 showDelay="1000"
+                class="ui-button-danger"
                 (click)="excluir(categoria)"
               ></button>
             </td>

@@ -1,3 +1,4 @@
+import { ToastModule } from 'primeng/toast';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -6,6 +7,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
+import { CategoriasService } from './categorias.service';
 
 @NgModule({
   declarations: [CategoriasPesquisaComponent],
@@ -15,11 +17,10 @@ import { TooltipModule } from 'primeng/tooltip';
     InputTextModule,
     ButtonModule,
     TableModule,
-    TooltipModule
+    TooltipModule,
+    ToastModule
   ],
-  exports: [
-    CategoriasPesquisaComponent
-  ],
-  providers: [],
+  exports: [CategoriasPesquisaComponent],
+  providers: [CategoriasService]
 })
-export class CategoriasModule { }
+export class CategoriasModule {}

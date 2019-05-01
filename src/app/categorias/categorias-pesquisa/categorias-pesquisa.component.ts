@@ -8,39 +8,37 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./categorias-pesquisa.component.css']
 })
 export class CategoriasPesquisaComponent implements OnInit {
-
   categorias = [];
 
   constructor(
     private service: CategoriasService,
     private msgService: MessageService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.pesquisar();
   }
 
   pesquisar() {
-    this.service.pesquisar()
-      .then((dados) => {
-        this.categorias = dados['content'];
-      });
+    this.service.pesquisar().then(dados => {
+      this.categorias = dados['content'];
+    });
   }
 
   excluir(categoria: any) {
-    this.service.excluir(categoria.id)
-      .then(() => {
-        this.pesquisar();
-        this.msgService.add({
-          severity: 'success',
-          summary: 'Exclusão',
-          detail: `Categoria ${categoria.nome} excluída`
-        });
+    this.service.excluir(categoria.id).then(() => {
+      this.pesquisar();
+      this.msgService.add({
+        severity: 'success',
+        summary: 'Exclusão',
+        detail: `Categoria ${categoria.nome} excluída`
       });
+    });
   }
 
-  filtrarCategoria(categoria: string){
-    console.log(categoria);
+  filtrarCategoria(categoria: string) {
+    this.service.listarPorNome(categoria).then(dados => {
+      this.categorias = dados;
+    });
   }
-
 }
