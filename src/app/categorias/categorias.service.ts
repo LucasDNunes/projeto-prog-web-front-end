@@ -32,4 +32,13 @@ export class CategoriasService {
   listarPorNome(nome: string): Promise<any> {
     return this.http.get<any>(this.categoriasUrl + '?nome=' + nome).toPromise();
   }
+
+  alterar(categoria: Categoria): Promise<any> {
+    return this.http.put(this.categoriasUrl + '/' + categoria.id, categoria)
+      .toPromise();
+  }
+
+  buscarPorCodigo(codigo: number): Promise<Categoria> {
+    return this.http.get<Categoria>(this.categoriasUrl + '/' + codigo).toPromise();
+  }
 }
