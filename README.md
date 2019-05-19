@@ -25,3 +25,27 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+### Alguns Comandos
+Criar modulo:
+```
+ng g m NOMEMODULO
+Or
+ng generate module NOMEMODULO
+```
+
+Criar service:
+```
+ng g s NOMESERVICE
+Or
+ng generate service NOMESERVICE
+```
+
+Criar componentes:
+```
+ng g C NOMECOMPONENTE
+Or
+ng generate component NOMECOMPONENTE
+```
+
+[comandos](https://angular.io/cli/generate) - comandos ng generate
