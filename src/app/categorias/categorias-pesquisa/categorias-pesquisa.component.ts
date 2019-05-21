@@ -9,6 +9,7 @@ import { MessageService, ConfirmationService } from 'primeng/api';
 })
 export class CategoriasPesquisaComponent implements OnInit {
   categorias = [];
+  filtro: string;
 
   constructor(
     private service: CategoriasService,
@@ -30,9 +31,9 @@ export class CategoriasPesquisaComponent implements OnInit {
   }
 
   pesquisar() {
-    // this.service.pesquisar().then(dados => {
-    //   this.categorias = dados['content'];
-    // });
+    this.service.pesquisar({ nome: this.filtro }).then(dados => {
+      this.categorias = dados['content'];
+    });
   }
 
   excluir(categoria: any) {

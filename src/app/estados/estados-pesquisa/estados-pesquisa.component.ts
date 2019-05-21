@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EstadosService } from '../estados.service';
-import { MessageService } from 'primeng/api';
+import { MessageService, ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-estados-pesquisa',
@@ -9,12 +9,48 @@ import { MessageService } from 'primeng/api';
 })
 export class EstadosPesquisaComponent implements OnInit {
 
+  estados = [];
+  filtro: string;
+
   constructor(
     private service: EstadosService,
     private msgService: MessageService,
+    private confirmationService: ConfirmationService
   ) { }
 
   ngOnInit() {
+    this.pesquisar();
   }
 
+  confirmaExclusao(categoria: any) {
+    this.confirmationService.confirm({
+      message: `Confirma a exclusão de: ${categoria.nome} ?`,
+      accept: () => {
+        this.excluir(categoria);
+      }
+    });
+  }
+
+  pesquisar() {
+    this.service.pesquisar({ nome: this.filtro }).then(dados => {
+      this.estados = dados['content'];
+    });
+  }
+
+  excluir(categoria: any) {
+    this.service.excluir(categoria.id).then(() => {
+      this.pesquisar();
+      this.msgService.add({
+        severity: 'success',
+        summary: 'Exclusão',
+        detail: `Categoria ${categoria.nome} excluída`
+      });
+    });
+  }
+
+  filtrarCategoria(categoria: string) {
+    this.service.listarPorNome(categoria).then(dados => {
+      this.estados = dados;
+    });
+  }
 }
