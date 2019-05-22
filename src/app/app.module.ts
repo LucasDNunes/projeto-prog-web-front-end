@@ -12,6 +12,9 @@ import { CategoriasCadastroComponent } from './categorias/categorias-cadastro/ca
 import { EstadosPesquisaComponent } from './estados/estados-pesquisa/estados-pesquisa.component';
 import { EstadosCadastroComponent } from './estados/estados-cadastro/estados-cadastro.component';
 import { EstadosModule } from './estados/estados.module';
+import { CidadesPesquisaComponent } from './cidades/cidades-pesquisa/cidades-pesquisa.component';
+import { CidadesCadastroComponent } from './cidades/cidades-cadastro/cidades-cadastro.component';
+import { CidadesModule } from './cidades/cidades.module';
 
 const rotas: Routes = [
   { path: 'categorias', component: CategoriasPesquisaComponent },
@@ -19,7 +22,10 @@ const rotas: Routes = [
   { path: 'categorias/:id', component: CategoriasCadastroComponent },
   { path: 'estados', component: EstadosPesquisaComponent },
   { path: 'estados/novo', component: EstadosCadastroComponent },
-  { path: 'estados/:id', component: EstadosCadastroComponent }
+  { path: 'estados/:id', component: EstadosCadastroComponent },
+  { path: 'cidades', component: CidadesPesquisaComponent },
+  { path: 'cidades/novo', component: CidadesCadastroComponent },
+  { path: 'cidades/:id', component: CidadesCadastroComponent }
 ];
 
 @NgModule({
@@ -32,7 +38,8 @@ const rotas: Routes = [
     CategoriasModule,
     HttpClientModule,
     RouterModule.forRoot(rotas),
-    EstadosModule
+    EstadosModule,
+    CidadesModule
   ],
   providers: [
     MessageService,

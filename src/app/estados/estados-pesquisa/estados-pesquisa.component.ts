@@ -48,7 +48,7 @@ export class EstadosPesquisaComponent implements OnInit {
     });
   }
 
-  filtrarCategoria(categoria: string) {
+  filtrarEstado(categoria: string) {
     this.service.listarPorNome(categoria).then(dados => {
       this.estados = dados;
     });

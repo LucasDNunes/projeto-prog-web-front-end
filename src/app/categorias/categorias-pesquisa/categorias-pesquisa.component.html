@@ -1,10 +1,14 @@
 <p-toast></p-toast>
-<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" acceptLabel="Sim" rejectLabel="Não">
+<p-confirmDialog 
+  header="Confirmação" 
+  icon="pi pi-question-circle" 
+  acceptLabel="Sim" 
+  rejectLabel="Não">
 </p-confirmDialog>
 
 <div class="container">
 
-  <form autocomplete="off" (ngSubimit)="pesquisar()">
+  <form autocomplete="off" (ngSubmit)="filtrarCategoria(search.value)">
 
     <div class="ui-g">
       <div class="ui-g-12">
@@ -14,9 +18,9 @@
       <div class="ui-g-12 ui-fluid">
         <label>Descrição</label>
         <input pInputText type="text" #search (keyup.enter)="filtrarCategoria(search.value)"
-          placeholder="Pesquisar pela categoria; Ex: informatica" />
+        placeholder="Pesquisar pela categoria; Ex: informatica" />
       </div>
-
+      <p>{{filtro}}</p>
       <div class="ui-g-12">
         <button pButton type="submit" label="Pesquisar"></button>
       </div>
@@ -38,7 +42,7 @@
             <td>{{ categoria.nome }}</td>
             <td class="col-acoes">
               <button pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top" showDelay="1000"
-                class="ui-button-info" [routerLink]="['/categorias',cat.id]"></button>
+                class="ui-button-info" [routerLink]="['/categorias',categoria.id]"></button>
               <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top" showDelay="1000"
                 class="ui-button-danger" (click)="confirmaExclusao(categoria)"></button>
             </td>
