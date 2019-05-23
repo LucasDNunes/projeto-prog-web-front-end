@@ -1,26 +1,22 @@
 <p-toast></p-toast>
-<p-confirmDialog 
-  header="Confirmação" 
-  icon="pi pi-question-circle" 
-  acceptLabel="Sim" 
-  rejectLabel="Não">
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" acceptLabel="Sim" rejectLabel="Não">
 </p-confirmDialog>
 
 <div class="container">
 
-  <form autocomplete="off" (ngSubmit)="filtrarCategoria(search.value)">
+  <form autocomplete="off" (ngSubmit)="filtrarEstado(search.value)">
 
     <div class="ui-g">
       <div class="ui-g-12">
-        <h1>Categorias</h1>
+        <h1>Estados</h1>
       </div>
 
       <div class="ui-g-12 ui-fluid">
         <label>Descrição</label>
-        <input pInputText type="text" #search (keyup.enter)="filtrarCategoria(search.value)"
-        placeholder="Pesquisar pela categoria; Ex: informatica" />
+        <input pInputText type="text" #search (keyup.enter)="filtrarEstado(search.value)"
+          placeholder="Pesquisar pelo Estado; Ex: Santa Catarina" />
       </div>
-      <p>{{filtro}}</p>
+
       <div class="ui-g-12">
         <button pButton type="submit" label="Pesquisar"></button>
       </div>
@@ -28,23 +24,23 @@
   </form>
   <div class="ui-g">
     <div class="ui-g-12">
-      <p-table [value]="categorias" [responsive]="true" [paginator]="true" [rows]="3">
+      <p-table [value]="estados" [responsive]="true" [paginator]="true" [rows]="3">
         <ng-template pTemplate="header">
           <tr>
             <th class="col-id-header">Id</th>
-            <th>Descrição</th>
+            <th>Nome</th>
             <th class="col-acoes"></th>
           </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-categoria>
+        <ng-template pTemplate="body" let-estado>
           <tr>
-            <td class="col-id">{{ categoria.id }}</td>
-            <td>{{ categoria.nome }}</td>
+            <td class="col-id">{{ estado.id }}</td>
+            <td>{{ estado.nome }}</td>
             <td class="col-acoes">
               <button pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top" showDelay="1000"
-                class="ui-button-info" [routerLink]="['/categorias',categoria.id]"></button>
+                class="ui-button-info" [routerLink]="['/estados',estado.id]"></button>
               <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top" showDelay="1000"
-                class="ui-button-danger" (click)="confirmaExclusao(categoria)"></button>
+                class="ui-button-danger" (click)="confirmaExclusao(estado)"></button>
             </td>
           </tr>
         </ng-template>
@@ -53,6 +49,6 @@
   </div>
 
   <div class="ui-g-12">
-    <a pButton label="Nova Categoria" routerLink="/categorias/novo"></a>
+    <a pButton label="Novo Estado" routerLink="/estados/novo"></a>
   </div>
 </div>

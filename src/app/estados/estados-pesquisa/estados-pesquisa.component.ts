@@ -1,18 +1,19 @@
-import { CategoriasService } from './../categorias.service';
 import { Component, OnInit } from '@angular/core';
+import { EstadosService } from '../estados.service';
 import { MessageService, ConfirmationService } from 'primeng/api';
 
 @Component({
-  selector: 'app-categorias-pesquisa',
-  templateUrl: './categorias-pesquisa.component.html',
-  styleUrls: ['./categorias-pesquisa.component.css']
+  selector: 'app-estados-pesquisa',
+  templateUrl: './estados-pesquisa.component.html',
+  styleUrls: ['./estados-pesquisa.component.css']
 })
-export class CategoriasPesquisaComponent implements OnInit {
-  categorias = [];
+export class EstadosPesquisaComponent implements OnInit {
+
+  estados = [];
   filtro: string;
 
   constructor(
-    private service: CategoriasService,
+    private service: EstadosService,
     private msgService: MessageService,
     private confirmationService: ConfirmationService
   ) { }
@@ -32,7 +33,7 @@ export class CategoriasPesquisaComponent implements OnInit {
 
   pesquisar() {
     this.service.pesquisar({ nome: this.filtro }).then(dados => {
-      this.categorias = dados['content'];
+      this.estados = dados['content'];
     });
   }
 
@@ -47,9 +48,9 @@ export class CategoriasPesquisaComponent implements OnInit {
     });
   }
 
-  filtrarCategoria(categoria: string) {
+  filtrarEstado(categoria: string) {
     this.service.listarPorNome(categoria).then(dados => {
-      this.categorias = dados;
+      this.estados = dados;
     });
   }
 }
