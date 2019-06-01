@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { MessageService } from 'primeng/api';
 import { CategoriasService } from '../categorias.service';
+import { Route } from '@angular/compiler/src/core';
 @Component({
   selector: 'app-categorias-cadastro',
   templateUrl: './categorias-cadastro.component.html',
@@ -17,7 +18,8 @@ export class CategoriasCadastroComponent implements OnInit {
   constructor(
     private service: CategoriasService,
     private messageService: MessageService,
-    private rota: ActivatedRoute
+    private rota: ActivatedRoute,
+    // private rotaP : Route
   ) { }
 
   ngOnInit() {
@@ -55,6 +57,7 @@ export class CategoriasCadastroComponent implements OnInit {
     } else {
       this.inserir(form);
     }
+    //this.rotaP.navigate(['/categorias']);
   }
 
   get editando() {

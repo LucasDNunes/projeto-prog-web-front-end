@@ -15,8 +15,7 @@ import { EstadosService } from 'src/app/estados/estados.service';
 export class CidadesCadastroComponent implements OnInit {
 
   cidade = new Cidade();
-  estados: Estado[];
-  estadoSelecionado = new Estado();
+  estados: Estado[] = [];
 
   constructor(
     private service: CidadesService,
@@ -31,14 +30,12 @@ export class CidadesCadastroComponent implements OnInit {
       this.carregarCidade(codigoCidade);
     }
     this.carregarEstados();
-    console.log(this.estadoSelecionado);
-
   }
 
   carregarEstados() {
     this.estadoService.pesquisar('').then(dados => {
-      this.estados = dados['content'];
-      console.log(this.estados);
+      this.estados = dados['content']
+      .map(e => ({label: e.nome, value: e.id}) );
     });
   }
 

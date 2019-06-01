@@ -8,13 +8,13 @@
 
     <div class="ui-g">
       <div class="ui-g-12">
-        <h1>Estados</h1>
+        <h1>Cidades</h1>
       </div>
 
       <div class="ui-g-12 ui-fluid">
         <label>Descrição</label>
         <input pInputText type="text" #search (keyup.enter)="filtrarEstado(search.value)"
-          placeholder="Pesquisar pelo Estado; Ex: Santa Catarina" />
+          placeholder="Pesquisar pela Cidade; Ex: Tubrão" />
       </div>
 
       <div class="ui-g-12">
@@ -28,7 +28,7 @@
         <ng-template pTemplate="header">
           <tr>
             <th class="col-id-header">Id</th>
-            <th>Nome</th>
+            <th>Cidade</th>
             <th class="col-acoes"></th>
           </tr>
         </ng-template>

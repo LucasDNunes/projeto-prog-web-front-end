@@ -49,3 +49,5 @@ ng generate component NOMECOMPONENTE
 ```
 
 [comandos](https://angular.io/cli/generate) - comandos ng generate
+
+[mascara de dinheiro](https://www.npmjs.com/package/ng2-currency-mask)
